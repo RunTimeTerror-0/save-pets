@@ -4,9 +4,18 @@ import 'package:save/core/utils/media_query_values.dart';
 import 'package:save/core/utils/style_manager.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    required this.onTap,
+    required this.iconColors,
+    required this.isIcon,
+  });
 
   final String title;
+  final VoidCallback onTap;
+  final Color iconColors;
+  final bool isIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +33,18 @@ class CustomAppBar extends StatelessWidget {
       ),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            IconButton(
+                onPressed: onTap,
+                icon: Icon(
+                  isIcon ? Icons.arrow_back : null,
+                  color: isIcon ? iconColors : null,
+                  size: 30,
+                )),
+            SizedBox(
+              width: context.width * 0.2,
+            ),
             Center(
               child: Padding(
                 padding: EdgeInsets.only(top: context.height * 0.03),

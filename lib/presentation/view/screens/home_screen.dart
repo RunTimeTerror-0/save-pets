@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:save/config/routes/app_routs.dart';
 import 'package:save/core/utils/app_colors.dart';
 import 'package:save/core/utils/media_query_values.dart';
 import 'package:save/core/utils/style_manager.dart';
+import 'package:save/presentation/view/screens/help_theme_screen.dart';
 import 'package:save/presentation/view/widgets/custom_appbar.dart';
 import 'package:save/presentation/view/widgets/custom_button.dart';
 import 'package:save/presentation/view/widgets/pets_card.dart';
@@ -14,7 +16,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, context.height * 0.1),
-        child: const CustomAppBar(title: "Paws"),
+        child: CustomAppBar(
+          isIcon: false,
+          title: "Paws",
+          onTap: () {},
+          iconColors: AppColors.lightBrown,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(children: [
@@ -66,7 +73,9 @@ class HomeScreen extends StatelessWidget {
                         lable: "Help Them",
                         height: context.height * 0.07,
                         width: context.width * 0.8,
-                        onTap: () {},
+                        onTap: () {
+                          navigateTo(context, HelpScreen());
+                        },
                         isOutlined: false),
                   ),
                 ],
