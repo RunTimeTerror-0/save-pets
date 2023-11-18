@@ -200,7 +200,7 @@ class HomeScreen extends StatelessWidget {
                     child: CustomButton(
                         textColor: AppColors.darkBrown,
                         backgroundColor: AppColors.offWhite,
-                        lable: "Help Them",
+                        lable: "Start a journey",
                         height: context.height * 0.07,
                         width: context.width * 0.8,
                         onTap: () {},
