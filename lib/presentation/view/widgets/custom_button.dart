@@ -5,16 +5,16 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     Key? key,
     required this.lable,
-    // required this.height,
-    // required this.width,
+    required this.height,
+    required this.width,
     required this.onTap,
     required this.isOutlined,
     this.backgroundColor,
     this.textColor,
   }) : super(key: key);
   final String lable;
-  // final double height;
-  // final double width;
+  final double height;
+  final double width;
   final VoidCallback onTap;
   final bool isOutlined;
   final Color? backgroundColor;
