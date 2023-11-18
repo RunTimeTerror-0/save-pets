@@ -8,4 +8,5 @@ class AppColors {
   static Color white = Colors.white;
   static Color black = Colors.black;
   static Color offWhite = HexColor("#FFF5F3");
+  static Color grey = HexColor("#E5E4E2");
 }

@@ -26,14 +26,10 @@ flutter:
 
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/background/
-   - assets/Eye/
-   - assets/icons/
-   - assets/leg/
-   - assets/logo/
-   - assets/Photos/
-  #   - images/a_dot_ham.jpeg
-
-  
+    - assets/photos/
+    - assets/icons/
+    - assets/logo/
+    - assets/eye/
+    - assets/leg/
+    - assets/background/

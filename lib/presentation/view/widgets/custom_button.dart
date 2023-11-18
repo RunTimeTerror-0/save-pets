@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:save/core/utils/app_colors.dart';
+import 'package:save/core/utils/style_manager.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -9,8 +9,8 @@ class CustomButton extends StatelessWidget {
     required this.width,
     required this.onTap,
     required this.isOutlined,
-    this.backgroundColor,
-    this.textColor,
+    required this.backgroundColor,
+    required this.textColor,
   }) : super(key: key);
   final String lable;
   final double height;
@@ -21,23 +21,23 @@ class CustomButton extends StatelessWidget {
   final Color? textColor;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onTap,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? AppColors.darkBrown,
-        shape: const StadiumBorder(),
-        side: isOutlined == true
-            ? const BorderSide(
-                width: 2,
-                color: Colors.white,
-              )
-            : BorderSide.none,
-      ),
-      child: Text(
-        lable,
-        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: textColor ?? Colors.white,
-            ),
+    return Container(
+      width: width,
+      height: height,
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          shape: const StadiumBorder(),
+          side: isOutlined == true
+              ? const BorderSide(
+                  width: 2,
+                  color: Colors.white,
+                )
+              : BorderSide.none,
+        ),
+        child:
+            Text(lable, style: getMediumStyle(color: textColor!, fontSize: 20)),
       ),
     );
   }
