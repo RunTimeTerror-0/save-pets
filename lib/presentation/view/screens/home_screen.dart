@@ -4,6 +4,7 @@ import 'package:save/core/utils/app_colors.dart';
 import 'package:save/core/utils/media_query_values.dart';
 import 'package:save/core/utils/style_manager.dart';
 import 'package:save/presentation/view/screens/help_theme_screen.dart';
+import 'package:save/presentation/view/screens/pets_screen.dart';
 import 'package:save/presentation/view/widgets/custom_appbar.dart';
 import 'package:save/presentation/view/widgets/custom_button.dart';
 import 'package:save/presentation/view/widgets/pets_card.dart';
@@ -117,7 +118,9 @@ class HomeScreen extends StatelessWidget {
                           lable: "Explore",
                           height: context.height * 0.07,
                           width: context.width * 0.8,
-                          onTap: () {},
+                          onTap: () {
+                            navigateTo(context, const PetsScreen());
+                          },
                           isOutlined: false,
                           backgroundColor: AppColors.darkBrown,
                           textColor: AppColors.offWhite),
