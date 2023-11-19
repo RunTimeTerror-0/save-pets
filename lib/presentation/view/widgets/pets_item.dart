@@ -26,7 +26,14 @@ Widget buildpetsItem({
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(imgUrl),
+                    SizedBox(
+                      height: context.height * 0.32,
+                      width: double.infinity,
+                      child: Image.network(
+                        imgUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     SizedBox(
                       height: context.height * 0.01,
                     ),
