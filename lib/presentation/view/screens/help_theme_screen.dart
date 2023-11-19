@@ -84,8 +84,8 @@ class _HelpScreenState extends State<HelpScreen> {
                               _image != null
                                   ? Container(
                                       clipBehavior: Clip.antiAlias,
-                                      width: 200,
-                                      height: 150,
+                                      width: 120,
+                                      height: 120,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
@@ -101,7 +101,7 @@ class _HelpScreenState extends State<HelpScreen> {
                                         color: AppColors.darkBrown,
                                       )),
                               SizedBox(
-                                height: context.height * 0.1,
+                                height: context.height * 0.05,
                               ),
                               defualtFormField(
                                   controller: genderController,
@@ -128,23 +128,26 @@ class _HelpScreenState extends State<HelpScreen> {
                                 height: context.height * .1,
                               ),
                               CustomButton(
-                                  lable: "Submit",
-                                  height: context.height * 0.07,
-                                  width: context.width * 0.8,
-                                  onTap: () {
-                                    if (imageUrl == null) {
-                                      uploadImage();
-                                    } else if (imageUrl != null) {
-                                      cubit.helpFun(
-                                          address: addressController.text,
-                                          gender: genderController.text,
-                                          phone: phoneController.text,
-                                          postImage: imageUrl);
-                                    }
-                                  },
-                                  isOutlined: false,
-                                  backgroundColor: AppColors.darkBrown,
-                                  textColor: AppColors.offWhite)
+                                lable: "Submit",
+                                height: context.height * 0.07,
+                                width: context.width * 0.8,
+                                onTap: () async {
+                                  if (imageUrl == null) {
+                                    await uploadImage();
+                                  }
+                                  if (imageUrl != null) {
+                                    cubit.helpFun(
+                                      address: addressController.text,
+                                      gender: genderController.text,
+                                      phone: phoneController.text,
+                                      postImage: imageUrl!,
+                                    );
+                                  }
+                                },
+                                isOutlined: false,
+                                backgroundColor: AppColors.darkBrown,
+                                textColor: AppColors.offWhite,
+                              )
                             ],
                           ),
                         ),

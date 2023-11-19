@@ -3,7 +3,14 @@ import 'package:save/core/utils/app_colors.dart';
 import 'package:save/core/utils/media_query_values.dart';
 import 'package:save/core/utils/style_manager.dart';
 
-Widget buildpetsItem(BuildContext context) => Padding(
+Widget buildpetsItem({
+  required BuildContext context,
+  required String imgUrl,
+  required String phone,
+  required String gender,
+  required String address,
+}) =>
+    Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
@@ -19,14 +26,14 @@ Widget buildpetsItem(BuildContext context) => Padding(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset("assets/photos/okeykat-food.png"),
+                    Image.asset(imgUrl),
                     SizedBox(
                       height: context.height * 0.01,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        "Phone : 010000",
+                        "Phone : $phone",
                         style: getRegularStyle(
                             color: AppColors.darkBrown, fontSize: 18),
                       ),
@@ -34,7 +41,7 @@ Widget buildpetsItem(BuildContext context) => Padding(
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        "Gender : Male",
+                        "Gender : $gender",
                         style: getRegularStyle(
                             color: AppColors.darkBrown, fontSize: 18),
                       ),
@@ -44,7 +51,7 @@ Widget buildpetsItem(BuildContext context) => Padding(
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
-                            "Address : MASOURA",
+                            "Address : $address",
                             style: getRegularStyle(
                                 color: AppColors.darkBrown, fontSize: 18),
                           ),

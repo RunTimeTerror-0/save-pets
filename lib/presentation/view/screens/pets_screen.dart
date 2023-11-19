@@ -10,19 +10,27 @@ class PetsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size(double.infinity, context.height * 0.1),
-          child: CustomAppBar(
-            isIcon: true,
-            title: "Pets",
-            onTap: () {
-              Navigator.pop(context);
-            },
-            iconColors: AppColors.white,
-          ),
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, context.height * 0.1),
+        child: CustomAppBar(
+          isIcon: true,
+          title: "Pets",
+          onTap: () {
+            Navigator.pop(context);
+          },
+          iconColors: AppColors.white,
         ),
-        body: ListView.builder(
-            itemBuilder: (context, index) => buildpetsItem(context),
-            itemCount: 3));
+      ),
+      body: ListView.builder(
+        itemBuilder: (context, index) => buildpetsItem(
+          context: context,
+          imgUrl: '',
+          phone: '',
+          gender: '',
+          address: '',
+        ),
+        itemCount: 3,
+      ),
+    );
   }
 }
