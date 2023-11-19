@@ -1,28 +1,51 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:save/core/utils/app_colors.dart';
 import 'package:save/core/utils/media_query_values.dart';
-import 'package:save/presentation/view/widgets/custom_appbar.dart';
 import 'package:save/presentation/view/widgets/custom_button.dart';
 import 'package:save/presentation/view/widgets/text_form_field.dart';
 
-class HelpScreen extends StatelessWidget {
-  HelpScreen({super.key});
+class HelpScreen extends StatefulWidget {
+  const HelpScreen({super.key});
 
+  @override
+  State<HelpScreen> createState() => _HelpScreenState();
+}
+
+class _HelpScreenState extends State<HelpScreen> {
   final TextEditingController genderController = TextEditingController();
+  File? _image;
+  String? imageUrl;
+
+  final _picker = ImagePicker();
+  Future<void> _openImagePicker() async {
+    final XFile? pickedImage =
+        await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      setState(() {
+        _image = File(pickedImage.path);
+      });
+    }
+  }
+
+  uploadImage() async {
+    Reference reference = FirebaseStorage.instance.ref().child('pets_pic/');
+    UploadTask uploadTask = reference.putFile(_image!);
+    TaskSnapshot snapshot = await uploadTask;
+    imageUrl = await snapshot.ref.getDownloadURL();
+    debugPrint("#####$imageUrl");
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, context.height * 0.1),
-        child: CustomAppBar(
-          isIcon: true,
-          title: "Help Pets",
-          onTap: () {
-            Navigator.pop(context);
-          },
-          iconColors: AppColors.white,
-        ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Help Them"),
+        backgroundColor: AppColors.darkBrown,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -42,13 +65,25 @@ class HelpScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.camera_alt,
-                          size: 50,
-                          color: AppColors.darkBrown,
-                        )),
+                    _image != null
+                        ? Container(
+                            clipBehavior: Clip.antiAlias,
+                            width: 200,
+                            height: 150,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.file(
+                              _image!,
+                              fit: BoxFit.cover,
+                            ))
+                        : IconButton(
+                            onPressed: _openImagePicker,
+                            icon: Icon(
+                              Icons.camera_alt,
+                              size: 50,
+                              color: AppColors.darkBrown,
+                            )),
                     SizedBox(
                       height: context.height * 0.1,
                     ),
@@ -80,7 +115,9 @@ class HelpScreen extends StatelessWidget {
                         lable: "Submit",
                         height: context.height * 0.07,
                         width: context.width * 0.8,
-                        onTap: () {},
+                        onTap: () {
+                          uploadImage();
+                        },
                         isOutlined: false,
                         backgroundColor: AppColors.darkBrown,
                         textColor: AppColors.offWhite)

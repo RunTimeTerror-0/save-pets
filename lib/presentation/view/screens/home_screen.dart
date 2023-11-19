@@ -5,7 +5,6 @@ import 'package:save/core/utils/media_query_values.dart';
 import 'package:save/core/utils/style_manager.dart';
 import 'package:save/presentation/view/screens/help_theme_screen.dart';
 import 'package:save/presentation/view/screens/pets_screen.dart';
-import 'package:save/presentation/view/widgets/custom_appbar.dart';
 import 'package:save/presentation/view/widgets/custom_button.dart';
 import 'package:save/presentation/view/widgets/pets_card.dart';
 
@@ -15,14 +14,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, context.height * 0.1),
-        child: CustomAppBar(
-          isIcon: false,
-          title: "Paws",
-          onTap: () {},
-          iconColors: AppColors.lightBrown,
-        ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Paws"),
+        elevation: 0,
+        backgroundColor: AppColors.darkBrown,
       ),
       body: SingleChildScrollView(
         child: Column(children: [
@@ -63,6 +59,7 @@ class HomeScreen extends StatelessWidget {
                     "Kindness and compassion towards all living beings is a sign of a civilized society. Conversely, cruelty, whether directed against humans or animals, is not unique to a culture or society of people.",
                     style: getRegularStyle(
                         color: AppColors.offWhite, fontSize: 20),
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(
                     height: context.height * 0.05,
@@ -131,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                     left: context.width * 0.2,
                     child: Image.asset(
                       "assets/leg/Iconmaterial-pets.png",
-                      color: Colors.grey[700],
+                      color: Colors.grey.withOpacity(0.5),
                       height: context.height * 0.4,
                     ),
                   ),
