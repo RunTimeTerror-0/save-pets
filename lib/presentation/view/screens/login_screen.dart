@@ -10,7 +10,6 @@ import 'package:save/presentation/view/screens/home_screen.dart';
 import 'package:save/presentation/view/screens/register_screen.dart';
 import 'package:save/presentation/view/widgets/custom_button.dart';
 import 'package:save/presentation/view/widgets/text_form_field.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:svg_flutter/svg.dart';
 
 // ignore: must_be_immutable
@@ -124,8 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               TextButton(
                                   onPressed: () {
-                                    navigateTo(
-                                        context, const RegisterScreen());
+                                    navigateTo(context, const RegisterScreen());
                                   },
                                   child: Text(
                                     "Sign Up",

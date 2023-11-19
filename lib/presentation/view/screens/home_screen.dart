@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:save/config/routes/app_routs.dart';
 import 'package:save/core/utils/app_colors.dart';
 import 'package:save/core/utils/media_query_values.dart';
 import 'package:save/core/utils/style_manager.dart';
-import 'package:save/presentation/manager/cubit/login_cubit.dart';
 import 'package:save/presentation/view/screens/help_theme_screen.dart';
 import 'package:save/presentation/view/screens/pets_screen.dart';
 import 'package:save/presentation/view/screens/request_screen.dart';
@@ -51,8 +49,8 @@ class HomeScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       "Not only people need home",
-                      style: getBoldStyle(
-                          color: AppColors.offWhite, fontSize: 25),
+                      style:
+                          getBoldStyle(color: AppColors.offWhite, fontSize: 25),
                     ),
                   ),
                   SizedBox(
@@ -195,8 +193,8 @@ class HomeScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       "The pet loves care and always needs it",
-                      style: getBoldStyle(
-                          color: AppColors.offWhite, fontSize: 25),
+                      style:
+                          getBoldStyle(color: AppColors.offWhite, fontSize: 25),
                     ),
                   ),
                   SizedBox(
