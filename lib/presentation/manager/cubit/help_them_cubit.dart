@@ -27,7 +27,8 @@ class HelpCubit extends Cubit<HelpStates> {
     );
     await FirebaseFirestore.instance
         .collection('Helps')
-        .add(model.toMap())
+        .doc("${DateTime.now()}")
+        .set(model.toMap())
         .then((value) {
       emit(HelpSuccessState());
     }).catchError((error) {
